@@ -1,0 +1,20 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://localhost:11434",
+    "ANTHROPIC_MODEL": "qwen3.5:cloud",
+    "ANTHROPIC_AUTH_TOKEN": "",
+    "ANTHROPIC_API_KEY": ""
+  },
+  "model": "ollama",
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "caveman@caveman": true
+  }
+}

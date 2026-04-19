@@ -1,0 +1,13 @@
+{
+  "ui": {
+    "theme": "dark",
+    "accent_color": "#00bcd4",
+
+    "compact_mode": true,
+    "hide_status_bar": true,
+    "hide_sidebar": false,
+
+    "animations": false,
+    "verbose": false
+  }
+}

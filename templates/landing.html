@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}Spendly — Track Every Rupee{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-inner-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Free to use · No credit card needed
+            </div>
+            <h1 class="hero-title">
+                Track every rupee.<br>
+                <em>Know where it goes.</em>
+            </h1>
+            <p class="hero-subtitle">
+                Log expenses, understand your spending patterns,<br>
+                and take control of your financial life.
+            </p>
+            <div class="hero-actions">
+                <a href="{{ url_for('register') }}" class="btn-primary">Get started free</a>
+                <button type="button" class="btn-primary btn-outline" id="how-it-works-btn">See how it works</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+        <div class="app-preview-frame">
+            <div class="app-preview-header">
+                <div class="traffic-lights">
+                    <span class="traffic-light red"></span>
+                    <span class="traffic-light yellow"></span>
+                    <span class="traffic-light green"></span>
+                </div>
+            </div>
+            <div class="app-preview-content">
+                <div class="stat-cards">
+                    <div class="stat-card">
+                        <span class="stat-label">Total Spent</span>
+                        <span class="stat-value">₹24,590</span>
+                        <span class="stat-change negative">-12% vs last month</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Income</span>
+                        <span class="stat-value">₹52,000</span>
+                        <span class="stat-change positive">+8% vs last month</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Savings</span>
+                        <span class="stat-value">₹27,410</span>
+                        <span class="stat-change positive">+23% vs last month</span>
+                    </div>
+                </div>
+                <div class="category-chart">
+                    <div class="chart-header">
+                        <span class="chart-title">Spending by Category</span>
+                    </div>
+                    <div class="chart-bars">
+                        <div class="chart-bar-item">
+                            <span class="chart-label">Food</span>
+                            <div class="chart-bar-track">
+                                <div class="chart-bar" style="width: 75%"></div>
+                            </div>
+                            <span class="chart-value">₹8,450</span>
+                        </div>
+                        <div class="chart-bar-item">
+                            <span class="chart-label">Transport</span>
+                            <div class="chart-bar-track">
+                                <div class="chart-bar chart-bar-2" style="width: 55%"></div>
+                            </div>
+                            <span class="chart-value">₹5,200</span>
+                        </div>
+                        <div class="chart-bar-item">
+                            <span class="chart-label">Bills</span>
+                            <div class="chart-bar-track">
+                                <div class="chart-bar chart-bar-3" style="width: 65%"></div>
+                            </div>
+                            <span class="chart-value">₹6,800</span>
+                        </div>
+                        <div class="chart-bar-item">
+                            <span class="chart-label">Entertainment</span>
+                            <div class="chart-bar-track">
+                                <div class="chart-bar chart-bar-4" style="width: 40%"></div>
+                            </div>
+                            <span class="chart-value">₹4,140</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="features-inner">
+        <div class="feature-card">
+            <div class="feature-icon">₹</div>
+            <h3 class="feature-title">Log expenses instantly</h3>
+            <p class="feature-body">Add any expense in seconds. Category, amount, date, description — all in one simple form.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">◎</div>
+            <h3 class="feature-title">Understand your patterns</h3>
+            <p class="feature-body">See exactly where your money goes with category breakdowns and monthly summaries.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">◷</div>
+            <h3 class="feature-title">Filter by time period</h3>
+            <p class="feature-body">View your spending for any date range — last week, last month, or a custom period.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-inner">
+        <h2 class="cta-title">Ready to take control?</h2>
+        <p class="cta-body">Join thousands of people who track their expenses with Spendly.</p>
+        <a href="{{ url_for('register') }}" class="btn-primary">Create free account</a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<div class="modal-overlay" id="video-modal" aria-hidden="true">
+    <div class="modal-container">
+        <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
+            <span>&times;</span>
+        </button>
+        <div class="modal-video-wrapper">
+            <iframe id="modal-youtube" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+<script>
+(function() {
+    var modal = document.getElementById('video-modal');
+    var openBtn = document.getElementById('how-it-works-btn');
+    var closeBtn = document.getElementById('modal-close-btn');
+    var iframe = document.getElementById('modal-youtube');
+    var videoUrl = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
+
+    function openModal() {
+        iframe.src = videoUrl;
+        modal.setAttribute('aria-hidden', 'false');
+        modal.classList.add('modal-active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        iframe.src = '';
+        modal.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('modal-active');
+        document.body.style.overflow = '';
+    }
+
+    if (openBtn) {
+        openBtn.addEventListener('click', openModal);
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('modal-active')) {
+            closeModal();
+        }
+    });
+})();
+</script>
+{% endblock %}
