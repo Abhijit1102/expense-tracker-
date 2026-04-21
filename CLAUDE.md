@@ -50,30 +50,31 @@ expense-tracker/
 - SQLite only — no PostgreSQL, no SQLAlchemy ORM, no external DB
 - Vanilla JS only — no React, no jQuery, no npm packages
 - No new pip packages — work within `requirements.txt` as-is unless explicitly told otherwise
+- Python managed by uv only — no system Python assumed. All commands use `uv run` or activate `.venv`
 - Python 3.10+ assumed — f-strings and match statements are fine
 
 ## Commands
 
 ```bash
-# Setup
-python -m venv venv
-venv\Scripts\activate       # Windows
-pip install -r requirements.txt
+# Setup (uv manages Python + venv)
+uv venv
+.venv\Scripts\activate      # Windows
+uv pip install -r requirements.txt
 
 # Run dev server (port 5001)
-python app.py
+uv run app.py
 
 # Run all tests
-pytest
+uv run pytest
 
 # Run a specific test file
-pytest tests/test_foo.py
+uv run pytest tests/test_foo.py
 
 # Run a specific test by name
-pytest -k "test_name"
+uv run pytest -k "test_name"
 
 # Run tests with output visible
-pytest -s
+uv run pytest -s
 ```
 
 ## Implemented vs Stub Routes
